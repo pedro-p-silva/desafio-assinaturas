@@ -26,6 +26,8 @@ class SignatureFactory extends Factory
             'register' => $this->faker->numberBetween(1, 5),
             'description' => $this->faker->text(200),
             'price' => $this->faker->randomNumber(4, 1000),
+            'due_date' => $this->faker->date(),
+            'converted_to_invoice' => null,
             'status' => fake()->numberBetween(0,1)
         ];
     }
