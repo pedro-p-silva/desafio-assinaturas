@@ -31,6 +31,7 @@ class Signature extends Model
     protected $fillable = [
         'register',
         'description',
-        'price'
+        'price',
+        'status'
     ];
 }

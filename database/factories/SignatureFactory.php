@@ -25,7 +25,8 @@ class SignatureFactory extends Factory
         return [
             'register' => $this->faker->numberBetween(1, 5),
             'description' => $this->faker->text(200),
-            'price' => $this->faker->randomNumber(4, 1000)
+            'price' => $this->faker->randomNumber(4, 1000),
+            'status' => fake()->numberBetween(0,1)
         ];
     }
 }
