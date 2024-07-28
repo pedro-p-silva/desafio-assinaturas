@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreign('register')->references('id')->on('users');
             $table->string('description', 200)->nullable();
             $table->decimal('price',15,2);
+            $table->date('due_date');
+            $table->enum('converted_to_invoice', [1])->nullable();
             $table->enum('status', [0,1]);
             $table->timestamps();
         });

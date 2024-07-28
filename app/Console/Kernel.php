@@ -8,11 +8,20 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 class Kernel extends ConsoleKernel
 {
     /**
+     * The artisan commands
+     *
+     * @var array
+     */
+    protected $commands = [
+        Commands\Convert_signatures_to_invoices::class
+    ];
+
+    /**
      * Define the application's command schedule.
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('app:convert_signatures_to_invoices')->everyMinute();
     }
 
     /**

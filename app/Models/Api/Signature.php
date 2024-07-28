@@ -32,6 +32,8 @@ class Signature extends Model
         'register',
         'description',
         'price',
+        'due_date',
+        'converted_to_invoice',
         'status'
     ];
 }
