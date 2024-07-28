@@ -23,3 +23,8 @@ Route::put('users/{id}', [User::class, 'updateUser'])->name('updateUser');
 Route::delete('users/{id}', [User::class, 'deleteUser'])->name('deleteUser');
 
 Route::get('signatures', [Signature::class, 'getAllSignatures'])->name('getAllSignatures');
+Route::get('signatures/{id}', [Signature::class, 'getSignatureById'])->name('getSignatureById');
+Route::post('signatures', [Signature::class, 'createSignature'])->name('createSignature');
+Route::put('signatures/{id}', [Signature::class, 'updateSignature'])->name('updateSignature');
+Route::delete('signatures/{id}', [Signature::class, 'deleteSignature'])->name('deleteSignature');
+
