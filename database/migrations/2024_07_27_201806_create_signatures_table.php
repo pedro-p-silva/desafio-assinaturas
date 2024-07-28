@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('register')->references('id')->on('users');
             $table->string('description', 200)->nullable();
             $table->decimal('price',15,2);
+            $table->enum('status', [0,1]);
             $table->timestamps();
         });
     }
