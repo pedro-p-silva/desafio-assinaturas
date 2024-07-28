@@ -10,6 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
+use Exception;
 
 class User extends Controller
 {
@@ -35,8 +36,8 @@ class User extends Controller
     {
         try {
             return $this->user->query()->paginate(5);
-        } catch (\Exception) {
-            return exceptionMessageDB();
+        } catch (Exception) {
+            return exceptionDbMessage();
         }
     }
 
@@ -49,19 +50,19 @@ class User extends Controller
     public function getUserById($id): JsonResponse
     {
         if (!is_numeric($id)) {
-            return notNumerical($id);
+            return noNumericalMessage($id);
         }
 
         try {
             $userById = $this->user->query()
                 ->where('id', '=', $id)
                 ->get();
-        } catch (\Exception) {
-            return exceptionMessageDB();
+        } catch (Exception) {
+            return exceptionDbMessage();
         }
 
         if (!$userById) {
-            return noValues();
+            return noValuesMessage();
         }
 
         return response()->json($userById);
@@ -90,8 +91,8 @@ class User extends Controller
 
         try {
             $createUser = $this->user->create($this->request->all());
-        } catch (\Exception){
-            return exceptionMessageDB();
+        } catch (Exception){
+            return exceptionDbMessage();
         }
 
         if (!$createUser){
@@ -112,7 +113,7 @@ class User extends Controller
         $data = $this->request->post();
 
         if (!is_numeric($id)) {
-            return notNumerical($id);
+            return noNumericalMessage($id);
         }
 
         $validator = Validator::make($this->request->all(),
@@ -139,15 +140,15 @@ class User extends Controller
                     'password' => Hash::make($data['password']),
                     'status' => $data['status']
                 ]);
-        }catch (\Exception) {
-            return exceptionMessageDB();
+        }catch (Exception) {
+            return exceptionDbMessage();
         }
 
         if (!$updateUser){
-            return response()->json(["Message" => "Houve um erro para editar os dados do usuário!"]);
+            return noUpdateMessage();
         }
 
-        return response()->json(["Message" => "Informações do usuário editadas com sucesso!"]);
+        return okUpdateMessage();
     }
 
     /**
@@ -159,21 +160,21 @@ class User extends Controller
     public function deleteUser($id): JsonResponse
     {
         if (!is_numeric($id)) {
-            return notNumerical($id);
+            return noNumericalMessage($id);
         }
 
         try {
             $deleteUser = $this->user->query()
                 ->where('id', '=', $id)
                 ->delete();
-        } catch (\Exception $e) {
-            return exceptionMessageDB();
+        } catch (Exception) {
+            return exceptionDbMessage();
         }
 
         if (!$deleteUser){
-            return response()->json(["Message" => "Houve um erro para remover o usuário!"]);
+            return noDeleteMessage();
         }
 
-        return response()->json(["message" => "Usuário removido com sucesso!"]);
+        return okDeleteMessage();
     }
 }
