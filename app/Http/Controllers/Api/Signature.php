@@ -136,7 +136,8 @@ class Signature extends Controller
                     'price' => $data['price'],
                     'status' => $data['status']
                 ]);
-        }catch (Exception) {
+        }catch (Exception $e) {
+            echo $e;
             return exceptionDbMessage();
         }
 
