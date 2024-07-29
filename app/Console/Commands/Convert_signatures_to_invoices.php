@@ -26,7 +26,7 @@ class Convert_signatures_to_invoices extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $signatures = $this->unconvertedSignatures();
 

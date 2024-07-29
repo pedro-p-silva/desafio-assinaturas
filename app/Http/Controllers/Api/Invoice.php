@@ -5,81 +5,82 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Models\Api\Signature as SignatureModel;
+use App\Models\Api\Invoice as InvoiceModel;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
 use Exception;
 
-class Signature extends Controller
+class Invoice extends Controller
 {
-    private SignatureModel $signature;
+    private InvoiceModel $invoice;
     private Request $request;
 
     /**
-     * @param SignatureModel $signature
+     * @param InvoiceModel $invoice
      * @param Request $request
      */
-    public function __construct(SignatureModel $signature, Request $request)
+    public function __construct(InvoiceModel $invoice, Request $request)
     {
-        $this->signature = $signature;
+        $this->invoice = $invoice;
         $this->request = $request;
     }
 
     /**
-     * Return all signatures
+     * Return all invoices
      *
      * @return LengthAwarePaginator|JsonResponse
      */
-    public function getAllSignatures(): LengthAwarePaginator|JsonResponse
+    public function getAllInvoices(): LengthAwarePaginator|JsonResponse
     {
         try {
-            return $this->signature->query()->paginate(5);
-        } catch (\Exception) {
+            return $this->invoice->query()->paginate(5);
+        } catch (Exception) {
             return exceptionDbMessage();
         }
     }
 
     /**
-     * Return signature by id
+     * Return invoice by id
      *
      * @param $id
      * @return JsonResponse
      */
-    public function getSignatureById($id): JsonResponse
+    public function getInvoiceById($id): JsonResponse
     {
         if (!is_numeric($id)) {
             return noNumericalMessage($id);
         }
 
         try {
-            $signatureById = $this->signature->query()
+            $invoiceById = $this->invoice->query()
                 ->where('id', '=', $id)
                 ->get();
-        } catch (\Exception) {
+        } catch (Exception) {
             return exceptionDbMessage();
         }
 
-        if (!$signatureById) {
+        if (!$invoiceById) {
             return noValuesMessage();
         }
 
-        return response()->json($signatureById);
+        return response()->json($invoiceById);
     }
 
     /**
-     * Create new signature
+     * Create new invoice
      *
      * @return JsonResponse|MessageBag
      */
-    public function createSignature(): JsonResponse | MessageBag
+    public function createInvoice(): JsonResponse | MessageBag
     {
         $validator = Validator::make($this->request->all(),
             [
                 'register' => 'required|numeric',
+                'signature' => 'required|numeric',
                 'description' => 'required|string',
+                'due_date' => 'required|date',
                 'price' => 'required|between:0,99.99',
-                'status' => 'required|numeric'
             ]
         );
 
@@ -88,12 +89,12 @@ class Signature extends Controller
         }
 
         try {
-            $createSignature = $this->signature->create($this->request->all());
-        } catch (\Exception){
+            $createInvoice = $this->invoice->create($this->request->all());
+        } catch (Exception){
             return exceptionDbMessage();
         }
 
-        if (!$createSignature){
+        if (!$createInvoice){
             return noCreateMessage();
         }
 
@@ -101,12 +102,12 @@ class Signature extends Controller
     }
 
     /**
-     * Update data signature
+     * Update data invoice
      *
      * @param $id
      * @return JsonResponse|MessageBag
      */
-    public function updateSignature($id): JsonResponse | MessageBag
+    public function updateInvoice($id): JsonResponse | MessageBag
     {
         $data = $this->request->post();
 
@@ -117,9 +118,10 @@ class Signature extends Controller
         $validator = Validator::make($this->request->all(),
             [
                 'register' => 'required|numeric',
+                'signature' => 'required|numeric',
                 'description' => 'required|string',
+                'due_date' => 'required|date',
                 'price' => 'required|between:0,99.99',
-                'status' => 'required|numeric'
             ]
         );
 
@@ -128,19 +130,20 @@ class Signature extends Controller
         }
 
         try {
-            $updateSignature = $this->signature::query()
+            $updateInvoice = $this->invoice::query()
                 ->where('id', '=', $id)
                 ->update([
                     'register' => $data['register'],
+                    'signature' => $data['signature'],
                     'description' => $data['description'],
-                    'price' => $data['price'],
-                    'status' => $data['status']
+                    'due_date' => $data['due_date'],
+                    'price' => $data['price']
                 ]);
         }catch (Exception) {
             return exceptionDbMessage();
         }
 
-        if (!$updateSignature){
+        if (!$updateInvoice){
             return noUpdateMessage();
         }
 
@@ -148,26 +151,26 @@ class Signature extends Controller
     }
 
     /**
-     * Remove signature
+     * Remove invoice
      *
      * @param $id
      * @return JsonResponse
      */
-    public function deleteSignature($id): JsonResponse
+    public function deleteInvoice($id): JsonResponse
     {
         if (!is_numeric($id)) {
             return noNumericalMessage($id);
         }
 
         try {
-            $deleteSignature = $this->signature->query()
+            $deleteInvoice = $this->invoice->query()
                 ->where('id', '=', $id)
                 ->delete();
         } catch (Exception) {
             return exceptionDbMessage();
         }
 
-        if (!$deleteSignature){
+        if (!$deleteInvoice){
             return noDeleteMessage();
         }
 

@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "ba923798-c645-4171-a071-65719f220c23",
+		"name": "API DESAFIO ASSINATURAS",
+		"description": "API desenvolvida como desafio no processo seletivo da empresa Dourasoft.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19083046"
+	},
+	"item": [
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/users",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"users"
+									]
+								},
+								"description": "Retorna todos os usuários cadastrados."
+							},
+							"response": []
+						},
+						{
+							"name": "User by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/users/3",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"users",
+										"3"
+									]
+								},
+								"description": "Retorna os usuários pelo identificador."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "User create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Matteo Alves\",\r\n    \"email\": \"matteo.alves@outlook.com.br\",\r\n    \"phone\": \"11943093324\",\r\n    \"password\": \"Pedro@2314\",\r\n    \"status\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/users",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"users"
+									]
+								},
+								"description": "Criação de um novo usuário."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "User update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Matt\",\r\n    \"email\": \"matteo.alves@outlook.com.br\",\r\n    \"phone\": \"11943093324\",\r\n    \"password\": \"Pedro@2314\",\r\n    \"status\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/users/15",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"users",
+										"15"
+									]
+								},
+								"description": "Edição dos usuários."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "User delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/users/1",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"users",
+										"1"
+									]
+								},
+								"description": "Deleta o usuário pelo identificador."
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "Contém os endpoints dos usuários/cadastros"
+		},
+		{
+			"name": "SIGNATURE",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Signatures",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/signatures",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"signatures"
+									]
+								},
+								"description": "Retorna todas as assinaturas."
+							},
+							"response": []
+						},
+						{
+							"name": "Signature by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/signatures/5",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"signatures",
+										"5"
+									]
+								},
+								"description": "Retorna as assinaturas pelo identificador."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Signature create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"register\": 8,\r\n    \"description\": \"Teste\",\r\n    \"price\": 6670.00,\r\n    \"status\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/signatures",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"signatures"
+									]
+								},
+								"description": "Criação de uma nova assinatura."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "Signature update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"register\": 8,\r\n    \"description\": \"Teste do Pedro ||\",\r\n    \"price\": 4444.00,\r\n    \"status\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/signatures/7",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"signatures",
+										"7"
+									]
+								},
+								"description": "Edição das assinaturas."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Signature delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/signatures/5",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"signatures",
+										"5"
+									]
+								},
+								"description": "Deleta as assinaturas pelo identificador."
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "INVOICE",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Invoices",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/invoices",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"invoices"
+									]
+								},
+								"description": "Retorna todas as faturas."
+							},
+							"response": []
+						},
+						{
+							"name": "Invoice by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/invoices/2",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"invoices",
+										"2"
+									]
+								},
+								"description": "Retorna as faturas pelo identificador."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Invoice create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"register\": 3,\r\n    \"signature\": 1,\r\n    \"description\": \"Invoice test post\", \r\n    \"due_date\": \"2024-08-08\",\r\n    \"price\": \"4444\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/invoices",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"invoices"
+									]
+								},
+								"description": "Criação de uma nova fatura."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "Invoice update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"register\": 1,\r\n    \"signature\": 1,\r\n    \"description\": \"Invoice test post\", \r\n    \"due_date\": \"2024-08-08\",\r\n    \"price\": \"4444\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/invoices/3",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"invoices",
+										"3"
+									]
+								},
+								"description": "Edição das faturas."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Invoice delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/invoices/2",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"invoices",
+										"2"
+									]
+								},
+								"description": "Deleta o as faturas pelo identificador."
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
