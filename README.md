@@ -1,49 +1,86 @@
-# DouraSoft
+<p align="center">
+  <img width="460" height="350" src="https://pedropsilva.com.br/images/portfolio/projects/project_two.png">
+</p>
 
-Desafio Assinaturas
+# API Cobrança de Assinaturas
 
-Desenvolvimento de uma API para cobrar assinaturas de seus cadastros em **PHP** e **PostgreSQL**
+Essa API foi desenvolvida utilizando a arquitetura REST. Ela foi solicitada como parte de um processo seletivo da empresa Dourasoft. Com esse serviço, é possível efetuar o gerenciamento de cadastros, assinaturas e faturas.<br>
 
-## Deverá conter
-**Cadastros**: ID, Codigo, Nome, Email e Telefone
+Para uma maior facilidade em efetuar validações locais, os seeders e factories foram também previamente configurados, deste modo, para outros desenvolvedores que clonarem o projeto, não existe a necessidade de cadastrar os dados manualmente ao criar as migrations.
 
-**Assinaturas**: ID, Cadastro, Descrição, Valor
+A API possui um schedule que verifica assinaturas que vencem daqui a 10 dias, essas assinaturas são convertidas em fatura e não podem ser convertidas mais de uma vez.<br><br>
 
-**Faturas**: ID, Cadastro, Assinatura, Descrição, Vencimento, Valor.
+## O que foi feito
+- ✅ CRUD Listagem/Inclusão/Edição/Exclusão de Cadastros.
+- ✅ CRUD Listagem/Inclusão/Edição/Exclusão de Assinaturas.
+- ✅ CRUD Listagem/Inclusão/Edição/Exclusão de Faturas.
+- ✅ Deve possuir uma Task que verifica uma vez ao dia todas as assinaturas que vencem daqui a 10 dias e converta elas em faturas.
+- ✅ A Task não pode converter faturas já convertidas hoje.
+- ✅ Utilizar composer.
+- ✅ Utilizar qualquer Framework PHP. Caso opte por não utilizar, desenvolver nos padrões de projeto MVC.
+- ✅ Utilizar o Postman para documentar a API. Exporte a documentação junto ao projeto na pasta docs.
+- ✅ Criar as Migrations.
+- ✅ Criar os Seeds<br><br>
 
-#### Atenção 🚨 Os campos Cadastro e Assinatura são chaves extrangeiras de Cadastros e Assinaturas respectivamente.
 
-## Instruções 🌄
+## Algumas IDEs recomendadas
 
-1. Faça um fork do projeto para sua conta pessoal
-2. Crie uma branch com o padrão: `desafio-seu-nome`
-3. Submeta seu código criando um Pull Request
-4. Estão faltando alguns campos propositalmente, você deve criá-los
+* [PHP Storm](https://www.jetbrains.com/pt-br/phpstorm/)
+* [Visual Studio Code](https://code.visualstudio.com/)<br><br>
 
-## Como o Sistema Deve Funcionar ⚙️
- - Deve possuir um CRUD Listagem/Inclusão/Edição/Exclusão de Cadastros
- - Deve possuir um CRUD Listagem/Inclusão/Edição/Exclusão de Assinaturas
- - Deve possuir um CRUD Listagem/Inclusão/Edição/Exclusão de Faturas
- - Deve possuir uma Task que verifica uma vez ao dia todas as assinaturas que vencem daqui a 10 dias e converta elas em faturas.
- - A Task não pode converter faturas já convertidas hoje.
- 
-## Você deve 🧯
-- Utilizar composer
-- Utilizar qualquer Framework PHP. Caso opte por não utilizar, desenvolver nos padrões de projeto MVC.
-- Utilizar o Postman para documentar a API. Exporte a documentação junto ao projeto na pasta docs.
+## Customizar Configurações
 
-## Não esqueça de 📆
-- Criar as Migrations
-- Criar os Seeds
+Veja: [Laravel Configuration Reference](https://laravel.com/docs/11.x/configuration).<br><br>
 
-## Pontos Extras ⏭️
-- Criar os casos de testes utilizando PHPUnit
-- Criar o frontend em um projeto separado com o framework de sua preferência.
+## Configurações do projeto
 
-## Dúvidas ❓
+### Clonar o projeto
+```sh
+git clone https://github.com/pedro-p-silva/desafio-assinaturas.git
+```
 
-Abra uma [issue](https://github.com/dourasoft/desafio-assinaturas/issues/new)
+### Instalar o gerenciador de pacotes
 
-Ou envie um email para: **paulo@dourasoft.com.br**
+```sh
+npm install
+```
 
-Boa sorte! 💪
+### Duplicar o arquivo .env.example e renomear o arquivo duplicado para ".env". Posteriormente, adicionar as informações de conexão do banco de dados no arquivo renomeado.<br>
+
+### Instalar o gerenciador de dependências
+
+```sh
+composer install
+```
+
+### Gerando a chave APP_KEY no arquivo .env
+
+```sh
+php artisan key:generate
+```
+
+### Migração das tabelas do banco de dados
+
+```sh
+php artisan migrate
+```
+
+### Populando as tabelas migradas
+
+```sh
+php artisan db:seed
+```
+
+### Para testar o schedule localmente
+
+```sh
+php artisan schedule:work
+```
+<br>
+
+## Skills utilizadas
+<div style="display: inline_block">
+  <img align="center" title="PHP" alt="Pedro-PHP" height="40" width="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg">
+  <img align="center" title="Laravel" alt="Pedro-Laravel" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/laravel/laravel-original.svg">
+  <img align="center" title="MySQL" alt="Pedro-Mysql" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg">
+</div>
