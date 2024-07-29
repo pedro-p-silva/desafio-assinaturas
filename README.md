@@ -20,7 +20,8 @@ A API possui um schedule que verifica assinaturas que vencem daqui a 10 dias, es
 - ✅ Utilizar qualquer Framework PHP. Caso opte por não utilizar, desenvolver nos padrões de projeto MVC.
 - ✅ Utilizar o Postman para documentar a API. Exporte a documentação junto ao projeto na pasta docs.
 - ✅ Criar as Migrations.
-- ✅ Criar os Seeds<br><br>
+- ✅ Criar os Seeds
+- ✅ Criar os testes unitários<br><br>
 
 
 ## Algumas IDEs recomendadas
