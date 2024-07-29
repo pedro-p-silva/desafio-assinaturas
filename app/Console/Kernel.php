@@ -21,7 +21,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('app:convert_signatures_to_invoices')->everyMinute();
+        $schedule->command('app:convert_signatures_to_invoices')->daily();
     }
 
     /**
